@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Tour</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .tour-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: 300px;
+        }
+        .tour-card img {
+            width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Tour Details</h1>
+    <form action="/add_tour" method="POST" enctype="multipart/form-data">
+        <label for="tour_name">Tour Name:</label>
+        <input type="text" id="tour_name" name="tour_name" required><br>
+
+        <label for="tour_location">Tour Location:</label>
+        <input type="text" id="tour_location" name="tour_location" required><br>
+
+        <label for="tour_price">Tour Price:</label>
+        <input type="number" id="tour_price" name="tour_price" required><br>
+
+        <label for="tour_type">Tour Type:</label>
+        <select id="tour_type" name="tour_type" required>
+            <option value="Adventure">Adventure</option>
+            <option value="Cultural">Cultural</option>
+            <option value="Historical">Historical</option>
+            <option value="Leisure">Leisure</option>
+            <option value="Wildlife">Wildlife</option>
+        </select><br>
+
+        <label for="tour_highlights">Tour Highlights:</label>
+        <textarea id="tour_highlights" name="tour_highlights" rows="4" required></textarea><br>
+
+        <label for="tour_images">Tour Images:</label>
+        <input type="file" id="tour_images" name="tour_images" multiple accept="image/*" required><br>
+
+        <label for="tour_banner">Tour Banner:</label>
+        <input type="file" id="tour_banner" name="tour_banner" accept="image/*" required><br>
+
+        <input type="submit" value="Add Tour">
+    </form>
+
+    <h2>Added Tours</h2>
+    <div id="tour_cards">
+        {% for tour in tours %}
+            <div class="tour-card">
+                <h3>{{ tour.tour_name }}</h3>
+                <p>Location: {{ tour.tour_location }}</p>
+                <p>Price: ${{ tour.tour_price }}</p>
+                <p>Type: {{ tour.tour_type }}</p>
+                <p>Highlights: {{ tour.tour_highlights }}</p>
+                <img src="{{ tour.tour_banner }}" alt="Tour Banner">
+                <h4>Images:</h4>
+                {% for image in tour.tour_images %}
+                    <img src="{{ image }}" alt="Tour Image">
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

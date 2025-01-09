@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+        }
+        
+        h2 {
+            color: #333;
+        }
+        
+        .tour-details, .highlights, .itinerary, .contact-form {
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+        }
+        
+        .contact-form {
+            background: #f9f9f9;
+        }
+        
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #0056b3;
+        }
+        
+        #responseMessage {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e0ffe0;
+            border: 1px solid #b2ffb2;
+            border-radius: 5px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Explore India: Golden Triangle Tour</h1>
+        <p class="subtitle">Experience the rich heritage and vibrant culture!</p>
+    </header>
+
+    <section class="tour-details">
+        <h2>Tour Details</h2>
+        <ul>
+            <li><strong>Duration:</strong> 7 Days, 6 Nights</li>
+            <li><strong>Start Date:</strong> October 24, 2024</li>
+            <li><strong>Price:</strong> $999 per person</li>
+            <li><strong>Group Size:</strong> Minimum 5, Maximum 20</li>
+        </ul>
+    </section>
+
+    <section class="highlights">
+        <h2>Key Highlights <i class="fas fa-star text-primary"></i></h2>
+        <ul>
+            <li>Visit the iconic Taj Mahal</li>
+            <li>Explore the vibrant markets of Jaipur</li>
+            <li>Enjoy traditional Indian cuisine</li>
+            <li>Discover the rich history of Delhi</li>
+        </ul>
+    </section>
+
+    <section class="itinerary">
+        <h2>Itinerary <i class="fas fa-map"></i></h2>
+        <ol>
+            <li>Day 1: Arrival in Delhi</li>
+            <li>Day 2: Delhi City Tour</li>
+            <li>Day 3: Delhi to Agra</li>
+            <li>Day 4: Agra to Jaipur</li>
+            <li>Day 5: Jaipur City Tour</li>
+            <li>Day 6: Jaipur to Delhi</li>
+            <li>Day 7: Departure</li>
+        </ol>
+    </section>
+
+    <section class="contact-form">
+        <h2>Contact Us</h2>
+        <form id="enquiryForm">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div>
+                <label for="mobile">Mobile:</label>
+                <input type="tel" id="mobile" required>
+            </div>
+            <div>
+                <label for="date">Plan Date:</label>
+                <input type="date" id="date" required>
+            </div>
+            <div>
+                <label for="reference">Reference:</label>
+                <input type="text" id="reference" required>
+            </div>
+            <div>
+                <label for="tourType">Tour Type:</label>
+                <select id="tourType" required>
+                    <option value="group">Group Tour</option>
+                    <option value="solo">Solo Tour</option>
+                    <option value="honeymoon">Honeymoon Tour</option>
+                </select>
+            </div>
+            <button type="submit"><i class="fas fa-paper-plane"></i> Submit</button>
+        </form>
+        <div id="responseMessage" class="hidden"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Explore India Tours. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#enquiryForm').on('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+        
+                // Gather form data
+                const name = $('#name').val();
+                const mobile = $('#mobile').val();
+                const planDate = $('#date').val();
+                const reference = $('#reference').val();
+                const tourType = $('#tourType').val();
+        
+                // Simulate form submission (replace with your AJAX call if needed)
+                $('#responseMessage').removeClass('hidden').text(`Thank you, ${name}! Your enquiry for a ${tourType} has been submitted.`);
+                
+                // Clear form fields
+                $('#enquiryForm')[0].reset();
+            });
+        });
+        
+    </script>
+</body>
+</html>
